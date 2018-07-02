@@ -4,21 +4,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.singtel.utils.Constants;
+import com.singtel.utils.Constants.AnimalType;
 
 public class Animal {
 	private JSONObject content;
 	
-	public Animal(String type) {
+	public Animal(AnimalType type) {
 		content = new JSONObject();
 		setType(type);
-		setProperty(Constants.WALK, "I am walking");//most animals walk
+		setProperty(Constants.AnimalAction.WALK.toString(), "I am walking");//most animals walk
 	}
 
 	public String getType() {
 		return (String) getProperty(Constants.TYPE);
 	}
 	
-	public void setType(String type) {
+	public void setType(AnimalType type) {
 		setProperty(Constants.TYPE, type);
 	}
 	

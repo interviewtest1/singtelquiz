@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class DolphinTest {
@@ -13,20 +14,18 @@ private Animal dolphin;
 	
 	@Before
 	public void setUp() {
-		dolphin = new Animal(Constants.TYPE_DOLPHIN);
-		dolphin.setProperty(Constants.SWIM, "I am swimming");
-		dolphin.removeProperty(Constants.WALK);
+		dolphin = AnimalFactory.getAnimal(Constants.AnimalType.DOLPHIN);
 	}
 	
 	@Test
 	public void testSwim() {
-		assertEquals("I am swimming", dolphin.getProperty(Constants.SWIM));
+		assertEquals("I am swimming", dolphin.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
 	
 	@Test
 	public void testWalk() {
 		try {
-			dolphin.getProperty(Constants.WALK);
+			dolphin.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("walk not supported", e.getMessage());
@@ -36,7 +35,7 @@ private Animal dolphin;
 	@Test
 	public void testSing() {
 		try {
-			dolphin.getProperty(Constants.SING);
+			dolphin.getProperty(Constants.AnimalAction.SING.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("sing not supported", e.getMessage());

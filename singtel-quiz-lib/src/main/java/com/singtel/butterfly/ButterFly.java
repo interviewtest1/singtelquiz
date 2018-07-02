@@ -7,23 +7,23 @@ public class ButterFly extends Animal {
 	private int age, metomorphosisAge;//in months
 
 	public ButterFly() {
-		super(Constants.TYPE_BUTTERFLY);
-		setProperty(Constants.WALK, "I am crawling");
-		setProperty(Constants.FLY, "I am flying");
+		super(Constants.AnimalType.BUTTERFLY);
+		setProperty(Constants.AnimalAction.WALK.toString(), "I am crawling");
+		setProperty(Constants.AnimalAction.FLY.toString(), "I am flying");
 	}
 	
 	public void walk() {
 		if(age < metomorphosisAge)
-			getProperty(Constants.WALK);
+			getProperty(Constants.AnimalAction.WALK.toString());
 		
-		throw new RuntimeException(Constants.WALK + "not supported");
+		throw new RuntimeException(Constants.AnimalAction.WALK + "not supported");
 	}
 	
 	public void fly() {
 		if(age >= metomorphosisAge)
-			getProperty(Constants.FLY);
+			getProperty(Constants.AnimalAction.FLY.toString());
 		
-		throw new RuntimeException(Constants.FLY + "not supported");
+		throw new RuntimeException(Constants.AnimalAction.FLY + "not supported");
 	}
 	
 	public void setAge(int age) {

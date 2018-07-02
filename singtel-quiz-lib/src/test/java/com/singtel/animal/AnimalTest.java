@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class AnimalTest {
@@ -12,11 +13,11 @@ public class AnimalTest {
 	
 	@Before
 	public void setUp() {
-		animal = new Animal(Constants.TYPE_ANIMAL);
+		animal = AnimalFactory.getAnimal(Constants.AnimalType.ANIMAL);
 	}
 	
 	@Test
 	public void testWalk() {
-		assertEquals("I am walking", animal.getProperty(Constants.WALK));
+		assertEquals("I am walking", animal.getProperty(Constants.AnimalAction.WALK.toString()));
 	}
 }

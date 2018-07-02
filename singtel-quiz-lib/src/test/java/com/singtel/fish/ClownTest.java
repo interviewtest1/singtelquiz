@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class ClownTest {
@@ -13,16 +14,12 @@ public class ClownTest {
 	
 	@Before
 	public void setUp() {
-		clown = new Animal(Constants.TYPE_CLOWN);
-		clown.setProperty(Constants.SWIM, "I am swimming");
-		clown.setProperty(Constants.CHARACTERISTIC, "I am small and colorful");
-		clown.setProperty(Constants.JOKE, "I am joking");
-		clown.removeProperty(Constants.WALK);
+		clown = AnimalFactory.getAnimal(Constants.AnimalType.CLOWN);
 	}
 	
 	@Test
 	public void testSwim() {
-		assertEquals("I am swimming", clown.getProperty(Constants.SWIM));
+		assertEquals("I am swimming", clown.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
 	
 	@Test
@@ -32,13 +29,13 @@ public class ClownTest {
 	
 	@Test
 	public void testEat() {
-		assertEquals("I am joking", clown.getProperty(Constants.JOKE));
+		assertEquals("I am joking", clown.getProperty(Constants.AnimalAction.JOKE.toString()));
 	}
 	
 	@Test
 	public void testWalk() {
 		try {
-			clown.getProperty(Constants.WALK);
+			clown.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("walk not supported", e.getMessage());
@@ -48,7 +45,7 @@ public class ClownTest {
 	@Test
 	public void testSing() {
 		try {
-			clown.getProperty(Constants.SING);
+			clown.getProperty(Constants.AnimalAction.SING.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("sing not supported", e.getMessage());

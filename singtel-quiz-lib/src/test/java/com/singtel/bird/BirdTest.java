@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class BirdTest {
@@ -13,23 +14,21 @@ public class BirdTest {
 	
 	@Before
 	public void setUp() {
-		bird = new Animal(Constants.TYPE_BIRD);
-		bird.setProperty(Constants.FLY, "I am flying");
-		bird.setProperty(Constants.SING, "I am singing");
+		bird = AnimalFactory.getAnimal(Constants.AnimalType.BIRD);
 	}
 	
 	@Test
 	public void testWalk() {
-		assertEquals("I am walking", bird.getProperty(Constants.WALK));
+		assertEquals("I am walking", bird.getProperty(Constants.AnimalAction.WALK.toString()));
 	}
 	
 	@Test
 	public void testFly() {
-		assertEquals("I am flying", bird.getProperty(Constants.FLY));
+		assertEquals("I am flying", bird.getProperty(Constants.AnimalAction.FLY.toString()));
 	}
 	
 	@Test
 	public void testSing() {
-		assertEquals("I am singing", bird.getProperty(Constants.SING));
+		assertEquals("I am singing", bird.getProperty(Constants.AnimalAction.SING.toString()));
 	}
 }

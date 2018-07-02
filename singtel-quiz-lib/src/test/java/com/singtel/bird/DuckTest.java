@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class DuckTest {
@@ -13,29 +14,26 @@ public class DuckTest {
 	
 	@Before
 	public void setUp() {
-		duck = new Animal(Constants.TYPE_DUCK);
-		duck.setProperty(Constants.SING, "Quack, quack");
-		duck.setProperty(Constants.SWIM, "I am swimming");
-		duck.setProperty(Constants.FLY, "I am flying");
+		duck = AnimalFactory.getAnimal(Constants.AnimalType.DUCK);
 	}
 	
 	@Test
 	public void testWalk() {
-		assertEquals("I am walking", duck.getProperty(Constants.WALK));
+		assertEquals("I am walking", duck.getProperty(Constants.AnimalAction.WALK.toString()));
 	}
 	
 	@Test
 	public void testFly() {
-		assertEquals("I am flying", duck.getProperty(Constants.FLY));
+		assertEquals("I am flying", duck.getProperty(Constants.AnimalAction.FLY.toString()));
 	}
 	
 	@Test
 	public void testSing() {
-		assertEquals("Quack, quack", duck.getProperty(Constants.SING));
+		assertEquals("Quack, quack", duck.getProperty(Constants.AnimalAction.SING.toString()));
 	}
 	
 	@Test
 	public void testSwim() {
-		assertEquals("I am swimming", duck.getProperty(Constants.SWIM));
+		assertEquals("I am swimming", duck.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
 }

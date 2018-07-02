@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class ChickenTest {
@@ -13,19 +14,18 @@ public class ChickenTest {
 	
 	@Before
 	public void setUp() {
-		chicken = new Animal(Constants.TYPE_CHICKEN);
-		chicken.setProperty(Constants.SING, "Cluck, cluck");
+		chicken = AnimalFactory.getAnimal(Constants.AnimalType.CHICKEN);
 	}
 	
 	@Test
 	public void testWalk() {
-		assertEquals("I am walking", chicken.getProperty(Constants.WALK));
+		assertEquals("I am walking", chicken.getProperty(Constants.AnimalAction.WALK.toString()));
 	}
 	
 	@Test
 	public void testFly() {
 		try {
-			chicken.getProperty(Constants.FLY);
+			chicken.getProperty(Constants.AnimalAction.FLY.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("fly not supported", e.getMessage());
@@ -34,6 +34,6 @@ public class ChickenTest {
 	
 	@Test
 	public void testSing() {
-		assertEquals("Cluck, cluck", chicken.getProperty(Constants.SING));
+		assertEquals("Cluck, cluck", chicken.getProperty(Constants.AnimalAction.SING.toString()));
 	}
 }

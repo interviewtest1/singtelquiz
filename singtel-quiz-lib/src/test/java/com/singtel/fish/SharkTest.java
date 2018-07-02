@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.singtel.animal.Animal;
+import com.singtel.animalfactory.AnimalFactory;
 import com.singtel.utils.Constants;
 
 public class SharkTest {
@@ -13,16 +14,12 @@ public class SharkTest {
 	
 	@Before
 	public void setUp() {
-		shark = new Animal(Constants.TYPE_SHARK);
-		shark.setProperty(Constants.SWIM, "I am swimming");
-		shark.setProperty(Constants.CHARACTERISTIC, "I am large and grey");
-		shark.setProperty(Constants.EAT, "I eat other fishes");
-		shark.removeProperty(Constants.WALK);
+		shark = AnimalFactory.getAnimal(Constants.AnimalType.SHARK);
 	}
 	
 	@Test
 	public void testSwim() {
-		assertEquals("I am swimming", shark.getProperty(Constants.SWIM));
+		assertEquals("I am swimming", shark.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
 	
 	@Test
@@ -32,13 +29,13 @@ public class SharkTest {
 	
 	@Test
 	public void testEat() {
-		assertEquals("I eat other fishes", shark.getProperty(Constants.EAT));
+		assertEquals("I eat other fishes", shark.getProperty(Constants.AnimalAction.EAT.toString()));
 	}
 	
 	@Test
 	public void testWalk() {
 		try {
-			shark.getProperty(Constants.WALK);
+			shark.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("walk not supported", e.getMessage());
@@ -48,7 +45,7 @@ public class SharkTest {
 	@Test
 	public void testSing() {
 		try {
-			shark.getProperty(Constants.SING);
+			shark.getProperty(Constants.AnimalAction.SING.toString());
 		}
 		catch(RuntimeException e) {
 			assertEquals("sing not supported", e.getMessage());
