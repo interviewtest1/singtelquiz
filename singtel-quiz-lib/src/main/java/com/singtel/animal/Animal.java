@@ -11,7 +11,7 @@ public class Animal {
 	
 	public Animal(AnimalType type) {
 		content = new JSONObject();
-		setType(type);
+		setType(type.toString());
 		setProperty(Constants.AnimalAction.WALK.toString(), "I am walking");//most animals walk
 	}
 
@@ -19,7 +19,7 @@ public class Animal {
 		return (String) getProperty(Constants.TYPE);
 	}
 	
-	public void setType(AnimalType type) {
+	public void setType(String type) {
 		setProperty(Constants.TYPE, type);
 	}
 	

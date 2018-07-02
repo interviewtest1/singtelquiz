@@ -17,6 +17,11 @@ public class ButterflyTest {
 	}
 	
 	@Test
+	public void testType() {
+		assertEquals(Constants.AnimalType.BUTTERFLY.toString(), butterFly.getType());
+	}
+	
+	@Test
 	public void testWalkAndFly() {
 		//caterpillar, age 2 months
 		butterFly.setAge(2);
@@ -27,7 +32,7 @@ public class ButterflyTest {
 			butterFly.getProperty(Constants.AnimalAction.FLY.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("fly not supported", e.getMessage());
+			assertEquals("FLY not supported", e.getMessage());
 		}
 		
 		//butterfly, age 14 months
@@ -37,7 +42,7 @@ public class ButterflyTest {
 			butterFly.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("walk not supported", e.getMessage());
+			assertEquals("WALK not supported", e.getMessage());
 		}
 		
 		assertEquals("I am flying", butterFly.getProperty(Constants.AnimalAction.FLY.toString()));

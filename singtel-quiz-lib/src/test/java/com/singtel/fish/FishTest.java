@@ -18,6 +18,11 @@ public class FishTest {
 	}
 	
 	@Test
+	public void testType() {
+		assertEquals(Constants.AnimalType.FISH.toString(), fish.getType());
+	}
+	
+	@Test
 	public void testSwim() {
 		assertEquals("I am swimming", fish.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
@@ -28,7 +33,7 @@ public class FishTest {
 			fish.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("walk not supported", e.getMessage());
+			assertEquals("WALK not supported", e.getMessage());
 		}
 	}
 	
@@ -38,7 +43,7 @@ public class FishTest {
 			fish.getProperty(Constants.AnimalAction.SING.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("sing not supported", e.getMessage());
+			assertEquals("SING not supported", e.getMessage());
 		}
 	}
 	

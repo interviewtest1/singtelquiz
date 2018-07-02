@@ -18,6 +18,11 @@ public class BirdTest {
 	}
 	
 	@Test
+	public void testType() {
+		assertEquals(Constants.AnimalType.BIRD.toString(), bird.getType());
+	}
+	
+	@Test
 	public void testWalk() {
 		assertEquals("I am walking", bird.getProperty(Constants.AnimalAction.WALK.toString()));
 	}

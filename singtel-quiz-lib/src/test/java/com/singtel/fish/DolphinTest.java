@@ -18,6 +18,11 @@ private Animal dolphin;
 	}
 	
 	@Test
+	public void testType() {
+		assertEquals(Constants.AnimalType.DOLPHIN.toString(), dolphin.getType());
+	}
+	
+	@Test
 	public void testSwim() {
 		assertEquals("I am swimming", dolphin.getProperty(Constants.AnimalAction.SWIM.toString()));
 	}
@@ -28,7 +33,7 @@ private Animal dolphin;
 			dolphin.getProperty(Constants.AnimalAction.WALK.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("walk not supported", e.getMessage());
+			assertEquals("WALK not supported", e.getMessage());
 		}
 	}
 	
@@ -38,7 +43,7 @@ private Animal dolphin;
 			dolphin.getProperty(Constants.AnimalAction.SING.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("sing not supported", e.getMessage());
+			assertEquals("SING not supported", e.getMessage());
 		}
 	}
 	

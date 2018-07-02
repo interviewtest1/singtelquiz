@@ -18,6 +18,11 @@ public class RoosterTest {
 	}
 	
 	@Test
+	public void testType() {
+		assertEquals(Constants.AnimalType.ROOSTER.toString(), rooster.getType());
+	}
+	
+	@Test
 	public void testWalk() {
 		assertEquals("I am walking", rooster.getProperty(Constants.AnimalAction.WALK.toString()));
 	}
@@ -28,7 +33,7 @@ public class RoosterTest {
 			rooster.getProperty(Constants.AnimalAction.FLY.toString());
 		}
 		catch(RuntimeException e) {
-			assertEquals("fly not supported", e.getMessage());
+			assertEquals("FLY not supported", e.getMessage());
 		}
 	}
 	
