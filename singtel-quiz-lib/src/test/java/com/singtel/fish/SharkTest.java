@@ -17,7 +17,7 @@ public class SharkTest {
 		shark.setProperty(Constants.SWIM, "I am swimming");
 		shark.setProperty(Constants.CHARACTERISTIC, "I am large and grey");
 		shark.setProperty(Constants.EAT, "I eat other fishes");
-		
+		shark.removeProperty(Constants.WALK);
 	}
 	
 	@Test
@@ -35,5 +35,24 @@ public class SharkTest {
 		assertEquals("I eat other fishes", shark.getProperty(Constants.EAT));
 	}
 	
+	@Test
+	public void testWalk() {
+		try {
+			shark.getProperty(Constants.WALK);
+		}
+		catch(RuntimeException e) {
+			assertEquals("walk not supported", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testSing() {
+		try {
+			shark.getProperty(Constants.SING);
+		}
+		catch(RuntimeException e) {
+			assertEquals("sing not supported", e.getMessage());
+		}
+	}
 	
 }

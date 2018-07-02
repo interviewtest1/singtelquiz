@@ -9,16 +9,38 @@ import com.singtel.animal.Animal;
 import com.singtel.utils.Constants;
 
 public class DolphinTest {
-private Animal fish;
+private Animal dolphin;
 	
 	@Before
 	public void setUp() {
-		fish = new Animal(Constants.TYPE_DOLPHIN);
-		fish.setProperty(Constants.SWIM, "I am swimming");
+		dolphin = new Animal(Constants.TYPE_DOLPHIN);
+		dolphin.setProperty(Constants.SWIM, "I am swimming");
+		dolphin.removeProperty(Constants.WALK);
 	}
 	
 	@Test
 	public void testSwim() {
-		assertEquals("I am swimming", fish.getProperty(Constants.SWIM));
+		assertEquals("I am swimming", dolphin.getProperty(Constants.SWIM));
 	}
+	
+	@Test
+	public void testWalk() {
+		try {
+			dolphin.getProperty(Constants.WALK);
+		}
+		catch(RuntimeException e) {
+			assertEquals("walk not supported", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testSing() {
+		try {
+			dolphin.getProperty(Constants.SING);
+		}
+		catch(RuntimeException e) {
+			assertEquals("sing not supported", e.getMessage());
+		}
+	}
+	
 }

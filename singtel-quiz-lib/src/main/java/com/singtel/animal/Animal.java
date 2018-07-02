@@ -26,6 +26,10 @@ public class Animal {
 		content.put(key, value);
 	}
 	
+	public void removeProperty(String key) {
+		content.remove(key);
+	}
+	
 	public Object getProperty(String key) {
 		try {
 			Object value = content.get(key);
