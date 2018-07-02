@@ -23,4 +23,9 @@ public interface Constants {
 	public static final String TYPE_CLOWN = "clown";
 	public static final String TYPE_DOLPHIN = "dolphin";
 	
+	public static final String TYPE_BUTTERFLY = "butterfly";
+	
+	public static final String AGE = "age";
+	public static final String METAMORPHOSIS_AGE = "metamorphosis_age";
+	
 }
