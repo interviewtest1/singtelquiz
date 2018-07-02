@@ -23,6 +23,10 @@ public interface Constants {
 	public static final String TYPE_CLOWN = "clown";
 	public static final String TYPE_DOLPHIN = "dolphin";
 	
+	public static final String TYPE_FROG = "frog";
+	public static final String TYPE_DOG = "dog";
+	public static final String TYPE_CAT = "cat";
+	
 	public static final String TYPE_BUTTERFLY = "butterfly";
 	
 	public static final String AGE = "age";
